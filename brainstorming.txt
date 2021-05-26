@@ -1,0 +1,37 @@
+-wins system
+    * count wins +
+    * count win streaks +
+-win or lose feature
+    * win or lose +
+    * win or lose messages +
+-username and login system + -> tied to level and profile 
+-game ending system
+    * play again or quit -> rematch or new players (new players login) +
+-level up and xp system
+    *write a loop/equation for the xp 
+-Character system and level rewards:
+    * every 2 levels you get a minor
+    * every 5 you get a medium cosmeticc
+    * every 7 you get a big cosmetic
+    * every 10 you Character
+    * rarest cosmetic = very low chance in chest
+    * coder cosmetics (only for coders of the game, need to use special command to obtain, this gear increases xp gain by 999%)
+-Profile system (check and edit your profile and check your (local) friend's profile)
+    * /profile = your own profile
+    * /profile-settings = edit your profile
+    * /profile(name)= view other local user's profile 
+-different letters
+    * common letter sets = 5 levels
+    * rare level sets = 10 levels 
+    * legendary = chance in chest
+    * elite = rarer chance in chest
+-win 2 times 0.5xp multiplier, win 5 times 1.0 xp multiplier, win 7 times 2.0 xp multiplier, win 10 times you get a chest
+         __________
+        /\____;;___\
+       | /         /
+       '. --------.'
+        |\         \
+        | |---------|
+        \ |    ))   |
+         \|_________|
+    
