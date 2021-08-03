@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import random
 import math
+import time
 
 def login (username):
     with open("stats.txt", "r") as f:
@@ -166,6 +167,9 @@ def printboard (p1moves, p2moves):
 
 def checkforresult (p1, p2, p1moves, p2moves):
     winningconditions = [{"br", "mr", "tr"}, {"bl", "ml", "tl"}, {"bm", "mm", "tm" }, {"tl", "mm", "br"}, {"tr", "mm", "bl"}, {"tl", "tm", "tr"}, {"ml", "mm", "mr"}, {"bl", "bm", "br"}]
+    if(len(p1moves) + len(p2moves) >= 9):
+        print("You have tied each other! There is no winner")
+        return True
     for w in winningconditions:
         if w.issubset(p1moves):
             print(F"{p1} wins")
@@ -173,7 +177,7 @@ def checkforresult (p1, p2, p1moves, p2moves):
             print(F"{p1} you have won this match! *note every time you win match you will gain +1 to your wins and +1 to your winstreak")
             return True
         elif w.issubset(p2moves):
-            print(F"{p2} wins") 
+            print(F"{p2} wns") 
             recordwin(p2, p1)
             print(F"{p2} you have won this match! *note every time you win match you will gain +1 to your wins and +1 to your winstreak")
             return True
@@ -198,26 +202,48 @@ if __name__ == "__main__":
             print("That password is incorrect, please try again")
             result = login (p2)
         print("Password correctly and successfully inputed!")
-        TurnCounter = 1
+        start = time.perf_counter()
+        Player1TurnCounter = 0
+        Player2TurnCounter = 0       
+        TotalTurnCounter = 0
+        p1time = 0
+        p2time = 0
         p1moves = set()
         p2moves = set()
         while (True):
             printboard(p1moves, p2moves)
-            if TurnCounter % 2 > 0:
+            if TotalTurnCounter % 2 == 0:
                 print(f"{p1}'s turn ") 
                 print(p1moves)
-                p1move = input("Please input your move: ")
+                p1start = time.perf_counter()
+                p1move = input("Please input your move: ")                
                 p1moves.add(p1move)
+                p1end = time.perf_counter()
+                p1time += p1end - p1start
+                Player1TurnCounter += 1
             else:      
                 print(f"{p2}'s turn ")
                 print(p2moves)
+                p2start = time.perf_counter()
                 p2move = input("Please input your move: ")
                 p2moves.add(p2move)
+                p2end = time.perf_counter()
+                p2time += p2end - p2start
+                Player2TurnCounter += 1 
             result = checkforresult(p1, p2, p1moves, p2moves)
-            TurnCounter += 1
+            TotalTurnCounter += 1
             if result == True:
                 printboard(p1moves, p2moves)
                 break
+        end = time.perf_counter()
+        print(f"During the match {end - start} was the total time spent between both players")
+        print(f"During the match {p1time} was the time player 1 spent on each move")
+        print(f"During the match {p1time} was the total time player 1 spent")
+        print(f"During the match {p2time} was the time player 2 spent on each move")
+        print(f"During the match {p2time} was the total time player 2 spent")
+        print(f"During the game, between both players, {TotalTurnCounter} moves were made")
+        print(f"Player 1 made {Player1TurnCounter} moves in total" )
+        print(f"Player 2 made {Player2TurnCounter} moves in total" )
         playorquit = input("would you like to play again or quit?, type play again to play again and type quit if you want to quit ")
         if (playorquit == "quit"):
             stillplaying = False
