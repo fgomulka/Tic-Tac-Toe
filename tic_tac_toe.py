@@ -177,7 +177,7 @@ def checkforresult (p1, p2, p1moves, p2moves):
             print(F"{p1} you have won this match! *note every time you win match you will gain +1 to your wins and +1 to your winstreak")
             return True
         elif w.issubset(p2moves):
-            print(F"{p2} wns") 
+            print(F"{p2} wins") 
             recordwin(p2, p1)
             print(F"{p2} you have won this match! *note every time you win match you will gain +1 to your wins and +1 to your winstreak")
             return True
